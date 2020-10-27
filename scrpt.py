@@ -1,21 +1,27 @@
-from Bio.Seq import Seq
-from Bio.SeqFeature import SeqFeature, FeatureLocation
-from Bio import SeqIO
-from Bio.SeqRecord import SeqRecord
-import os
-def summarize_contents(filename):
-all_s = []
-r = list(SeqIO.parse(filename,"genbank"))
-print("Path: ",os.path.dirname(filename))
-print("Num_record = %i records" %len(r))
-print("\n")
-for seq_r in SeqIO.parse(filename,"genbank"):
-	all_s.append(seq_r.name)
-	print("Name: ",seq_r.name)
-	print("ID :",seq_r.id)
-	print("Location:")
-	for seq_features in seq_r.features :
-	print('Star: %d, Stop: %d' %(int(seq_feature.location.start),int(seq_feature.location.end)))
-		
-	
-sunnarize_contents(filename)
+def  resume_contents ( nombre de archivo ):
+	listaOs  =  os . camino . split ( nombre de archivo )
+	listaExt  =  os . camino . splitext ( nombre de archivo )
+	si ( listaExt [ 1 ] ==  ".gbk" ):
+		type_file =  "genbank"
+	otra cosa :
+		type_file =  "fasta"
+	registro  =  lista ( SeqIO . parse ( nombre de archivo , tipo_archivo ))
+	#Creacion de diccionario
+	d  = {}
+	d [ 'Archivo:' ] =  listaOs [ 1 ]
+	d [ 'Ruta:' ] =  listaOs [ 0 ]
+	d [ 'Num_records:' ] =  len ( registro )
+	#Diccionario con listas
+	d [ 'Nombres:' ] = []
+	d [ 'ID:' ] = []
+	d [ 'Descripciones' ] = []
+	#Registro de records
+	para  seq_rcd  en  SeqIO . analizar ( nombre de archivo , type_file ):
+		d [ 'Nombres:' ]. append ( seq_rcd . Nombre )
+		d [ 'ID:' ]. añadir ( seq_rcd . id )
+		d [ 'Descripciones' ]. añadir ( descripción de seq_rcd . )
+	volver  d
+#Imprimir la funcion
+si  name  ==  "main" :
+	resultados  =  resume_contents ( nombre de archivo )
+	imprimir ( resultados )
