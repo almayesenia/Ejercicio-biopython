@@ -1,4 +1,4 @@
- import unittest
+import unittest
 import script
 import os
 
@@ -27,4 +27,4 @@ class Prueba(unittest.TestCase):
 
 		d_6 = {'File:': 'opuntia.fasta', 'Path:': os.path.abspath('data'), 'Num_records:': 7, 'Names:': ['gi|6273291|gb|AF191665.1|AF191665', 'gi|6273290|gb|AF191664.1|AF191664', 'gi|6273289|gb|AF191663.1|AF191663', 'gi|6273287|gb|AF191661.1|AF191661', 'gi|6273286|gb|AF191660.1|AF191660', 'gi|6273285|gb|AF191659.1|AF191659', 'gi|6273284|gb|AF191658.1|AF191658'], 'IDs:': ['gi|6273291|gb|AF191665.1|AF191665', 'gi|6273290|gb|AF191664.1|AF191664', 'gi|6273289|gb|AF191663.1|AF191663', 'gi|6273287|gb|AF191661.1|AF191661', 'gi|6273286|gb|AF191660.1|AF191660', 'gi|6273285|gb|AF191659.1|AF191659', 'gi|6273284|gb|AF191658.1|AF191658'], 'Descriptions': ['gi|6273291|gb|AF191665.1|AF191665 Opuntia marenae rpl16 gene; chloroplast gene for chloroplast product, partial intron sequence', 'gi|6273290|gb|AF191664.1|AF191664 Opuntia clavata rpl16 gene; chloroplast gene for chloroplast product, partial intron sequence', 'gi|6273289|gb|AF191663.1|AF191663 Opuntia bradtiana rpl16 gene; chloroplast gene for chloroplast product, partial intron sequence', 'gi|6273287|gb|AF191661.1|AF191661 Opuntia kuehnrichiana rpl16 gene; chloroplast gene for chloroplast product, partial intron sequence', 'gi|6273286|gb|AF191660.1|AF191660 Opuntia echinacea rpl16 gene; chloroplast gene for chloroplast product, partial intron sequence', 'gi|6273285|gb|AF191659.1|AF191659 Opuntia pachypus rpl16 gene; chloroplast gene for chloroplast product, partial intron sequence', 'gi|6273284|gb|AF191658.1|AF191658 Opuntia subulata rpl16 gene; chloroplast gene for chloroplast product, partial intron sequence']}
 		s = script.summarize_contents(os.path.abspath("data/opuntia.fasta"))
-		self.assertDictEqual(d_6, s) 
+		self.assertDictEqual(d_6, s)
