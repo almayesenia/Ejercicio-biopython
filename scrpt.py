@@ -1,27 +1,35 @@
-def  resume_contents ( nombre de archivo ):
-	listaOs  =  os . camino . split ( nombre de archivo )
-	listaExt  =  os . camino . splitext ( nombre de archivo )
-	si ( listaExt [ 1 ] ==  ".gbk" ):
-		type_file =  "genbank"
-	otra cosa :
-		type_file =  "fasta"
-	registro  =  lista ( SeqIO . parse ( nombre de archivo , tipo_archivo ))
+#creacion de script
+from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
+import os
+
+filename = os.path.abspath("data/ls_orchid.gbk")
+
+#Creacion de funcion
+def summarize_contents(filename):
+	listaOs = os.path.split(filename)
+	listaExt = os.path.splitext(filename)
+	if (listaExt[1] == ".gbk"):
+		type_file= "genbank"
+	else: 
+		type_file= "fasta"
+	record = list(SeqIO.parse(filename, type_file))
 	#Creacion de diccionario
-	d  = {}
-	d [ 'Archivo:' ] =  listaOs [ 1 ]
-	d [ 'Ruta:' ] =  listaOs [ 0 ]
-	d [ 'Num_records:' ] =  len ( registro )
+	d = {}
+	d['File:'] = listaOs[1]
+	d['Path:'] = listaOs[0]
+	d['Num_records:'] = len(record)
 	#Diccionario con listas
-	d [ 'Nombres:' ] = []
-	d [ 'ID:' ] = []
-	d [ 'Descripciones' ] = []
+	d['Names:'] = []
+	d['IDs:'] = []
+	d['Descriptions'] = []
 	#Registro de records
-	para  seq_rcd  en  SeqIO . analizar ( nombre de archivo , type_file ):
-		d [ 'Nombres:' ]. append ( seq_rcd . Nombre )
-		d [ 'ID:' ]. añadir ( seq_rcd . id )
-		d [ 'Descripciones' ]. añadir ( descripción de seq_rcd . )
-	volver  d
+	for seq_rcd in SeqIO.parse(filename,type_file):
+		d['Names:'].append(seq_rcd.name)
+		d['IDs:'].append(seq_rcd.id)
+		d['Descriptions'].append(seq_rcd.description)
+	return d
 #Imprimir la funcion
-si  name  ==  "main" :
-	resultados  =  resume_contents ( nombre de archivo )
-	imprimir ( resultados )
+if __name__ == "__main__":
+	resultados = summarize_contents(filename)
+	print(resultados)
